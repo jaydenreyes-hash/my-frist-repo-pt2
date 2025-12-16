@@ -11,6 +11,47 @@
   canvas.style.height = H + 'px';
   ctx.scale(DPR, DPR);
 
+  // Web Audio context for sound effects
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const masterGain = audioCtx.createGain();
+  masterGain.gain.value = 0.9;
+  masterGain.connect(audioCtx.destination);
+
+  function playClash(){
+    if (audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
+    const now = audioCtx.currentTime;
+    // metallic clang
+    const osc = audioCtx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(900, now);
+    osc.frequency.exponentialRampToValueAtTime(300, now + 0.18);
+    const oscGain = audioCtx.createGain();
+    oscGain.gain.setValueAtTime(0, now);
+    oscGain.gain.linearRampToValueAtTime(0.8, now + 0.01);
+    oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+    osc.connect(oscGain); oscGain.connect(masterGain);
+    osc.start(now); osc.stop(now + 0.8);
+
+    // noise sparks
+    const dur = 0.25;
+    const bufferSize = Math.floor(audioCtx.sampleRate * dur);
+    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / bufferSize);
+    const noise = audioCtx.createBufferSource();
+    noise.buffer = buffer;
+    const noiseFilter = audioCtx.createBiquadFilter(); noiseFilter.type = 'bandpass'; noiseFilter.frequency.value = 1800;
+    const noiseGain = audioCtx.createGain(); noiseGain.gain.setValueAtTime(0.9, now); noiseGain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+    noise.connect(noiseFilter); noiseFilter.connect(noiseGain); noiseGain.connect(masterGain);
+    noise.start(now); noise.stop(now + dur + 0.02);
+
+    // small low rumble for weight
+    const low = audioCtx.createOscillator(); low.type = 'sine'; low.frequency.setValueAtTime(60, now);
+    const lowGain = audioCtx.createGain(); lowGain.gain.setValueAtTime(0.07, now); lowGain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+    low.connect(lowGain); lowGain.connect(masterGain);
+    low.start(now); low.stop(now + 0.26);
+  }
+
   let screenShakeIntensity = 0;
   const weaponTrails = {A: [], B: []};
 
@@ -272,6 +313,8 @@
         // handle collision effects
         handleCollision(A, B);
         collided = true;
+        // play clash sound
+        try { playClash(); } catch(e) { /* ignore audio errors */ }
         // freeze movement so they don't swap positions/sizes
         A.vx = 0; B.vx = 0;
         // align them so sword tips meet exactly at impactX
