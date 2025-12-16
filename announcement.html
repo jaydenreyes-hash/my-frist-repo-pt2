@@ -9,36 +9,60 @@
   <body>
     <main class="hero">
       <div class="card">
-        <h1 class="title">ANNOUNCEMENT</h1>
-        <p class="subtitle">A titan clash: Monkey D. Luffy goes toe-to-toe with Blackbeard</p>
+        <h1 class="title hover-letters">ANNOUNCEMENT</h1>
+        <p class="subtitle hover-letters">A titan clash: Monkey D. Luffy goes toe-to-toe with Blackbeard</p>
         <div class="match">
           <div class="fighter">
             <div class="avatar luffy">🟡</div>
-            <h2>Monkey D. Luffy</h2>
-            <p class="desc">The Straw Hat captain, rubber-powered and relentless.</p>
+            <h2 class="hover-letters">Monkey D. Luffy</h2>
+            <p class="desc hover-letters">The Straw Hat captain, rubber-powered and relentless.</p>
           </div>
           <div class="vs">VS</div>
           <div class="fighter">
             <div class="avatar blackbeard">⚫</div>
-            <h2>Blackbeard</h2>
-            <p class="desc">A fearsome pirate with dark ambition and deadly power.</p>
+            <h2 class="hover-letters">Blackbeard</h2>
+            <p class="desc hover-letters">A fearsome pirate with dark ambition and deadly power.</p>
           </div>
         </div>
 
         <div class="scenario">
-          <h3>The Reason for Clash</h3>
-          <p>After years of sailing the seas, their paths finally converge. Luffy, pursuing his dream of becoming Pirate King, has gathered powerful allies and conquered numerous islands. Blackbeard, driven by ambition to overthrow the current world order, seeks the ultimate power scattered across the Grand Line. When they both discover the location of an ancient treasure that could tip the scales of power, neither can back down. Honor, pride, and the weight of their dreams collide in this inevitable showdown. Tonight, the seas will decide whose will is stronger.</p>
+          <h3 class="hover-letters">The Reason for Clash</h3>
+          <p class="hover-letters">After years of sailing the seas, their paths finally converge. Luffy, pursuing his dream of becoming Pirate King, has gathered powerful allies and conquered numerous islands. Blackbeard, driven by ambition to overthrow the current world order, seeks the ultimate power scattered across the Grand Line. When they both discover the location of an ancient treasure that could tip the scales of power, neither can back down. Honor, pride, and the weight of their dreams collide in this inevitable showdown. Tonight, the seas will decide whose will is stronger.</p>
         </div>
 
         <div class="battle-area">
           <canvas id="battleCanvas" width="800" height="300" aria-label="Luffy and Blackbeard clash animation"></canvas>
         </div>
 
-        <p class="when">When: Tonight — The seas will tremble.</p>
-        <a class="cta" href="#" onclick="window.startBattle(); return false;">Witness the Clash</a>
+        <p class="when hover-letters">When: Tonight — The seas will tremble.</p>
+        <a class="cta" href="#">Witness the Clash</a>
+        <button id="muteButton" class="cta" style="margin-left: 10px;">Mute</button>
       </div>
       <footer class="note">Fan-made announcement • For entertainment only</footer>
     </main>
     <script src="battle.js"></script>
+    <script>
+      // Wraps each character in .hover-letters elements with a span for per-letter hover effects
+      document.addEventListener('DOMContentLoaded', () => {
+        const wrapLetters = (el) => {
+          const text = el.textContent;
+          const frag = document.createDocumentFragment();
+          for (const ch of text) {
+            if (ch === ' ') {
+              frag.appendChild(document.createTextNode(' '));
+              continue;
+            }
+            const span = document.createElement('span');
+            span.className = 'letter-span';
+            span.textContent = ch;
+            frag.appendChild(span);
+          }
+          el.textContent = '';
+          el.appendChild(frag);
+        };
+
+        document.querySelectorAll('.hover-letters').forEach(wrapLetters);
+      });
+    </script>
   </body>
 </html>

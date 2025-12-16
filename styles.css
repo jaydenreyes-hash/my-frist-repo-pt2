@@ -30,4 +30,17 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,-apple-s
 .battle-area{margin-top:18px;display:flex;justify-content:center}
 #battleCanvas{width:100%;max-width:800px;height:auto;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg,rgba(6,8,20,0.6),rgba(4,6,12,0.9));}
 
+/* per-letter hover animation */
+.hover-letters{display:inline-block;}
+.hover-letters .letter-span{
+  display:inline-block;
+  transition:transform 0.18s ease, color 0.18s ease, text-shadow 0.18s ease;
+  pointer-events:auto;
+}
+.hover-letters .letter-span:hover{
+  transform:translateY(-4px) rotate(-2deg) scale(1.04);
+  color:var(--accent);
+  text-shadow:0 4px 14px rgba(255,204,0,0.45);
+}
+
 
