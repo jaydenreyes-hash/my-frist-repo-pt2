@@ -1,0 +1,24 @@
+:root{
+  --bg:#0b1020;
+  --card:#0f1724;
+  --accent:#ffcc00;
+  --muted:#98a0b3;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,-apple-system,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#081022);color:#e8eef8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
+.hero{width:100%;max-width:900px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.08));border:1px solid rgba(255,255,255,0.04);padding:36px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);}
+.title{letter-spacing:4px;color:var(--accent);margin:0 0 8px;font-size:14px}
+.subtitle{margin:0 0 20px;font-size:20px;color:#dfe8ff}
+.match{display:flex;align-items:center;gap:18px}
+.fighter{flex:1;text-align:center}
+.avatar{width:96px;height:96px;border-radius:50%;display:inline-grid;place-items:center;font-size:42px;margin-bottom:8px}
+.avatar.luffy{background:linear-gradient(135deg,#ffd27a,#ffb347);color:#1a1200}
+.avatar.blackbeard{background:linear-gradient(135deg,#333,#000);color:#fff}
+.vs{font-weight:700;color:var(--accent);font-size:20px}
+.desc{margin:6px 0 0;color:var(--muted)}
+.when{margin-top:20px;color:#cfe3ff}
+.cta{display:inline-block;margin-top:14px;padding:12px 18px;background:var(--accent);color:#071018;border-radius:8px;text-decoration:none;font-weight:600}
+.note{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+@media(min-width:720px){.match{gap:36px}}
