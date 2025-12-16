@@ -20,6 +20,9 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,-apple-s
 .when{margin-top:20px;color:#cfe3ff}
 .cta{display:inline-block;margin-top:14px;padding:12px 18px;background:var(--accent);color:#071018;border-radius:8px;text-decoration:none;font-weight:600}
 .note{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+.scenario{margin-top:28px;padding:20px;background:rgba(255,204,0,0.05);border:1px solid rgba(255,204,0,0.15);border-radius:8px;color:#dfe8ff}
+.scenario h3{margin:0 0 12px;color:var(--accent);font-size:16px;letter-spacing:1px}
+.scenario p{margin:0;line-height:1.6;color:#cfe3ff;font-size:14px}
 
 @media(min-width:720px){.match{gap:36px}}
 
