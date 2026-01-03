@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jayden Reyes | IT Support</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Jayden Reyes</h1>
+    <p>Entry-Level IT Support Specialist</p>
+    <div class="links">
+      <a href="#" onclick="openEmailModal()">Email Me</a>
+      <a href="https://www.linkedin.com/in/jayden-reyes-5073a0344/" target="_blank">
+        LinkedIn
+      </a>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>👋 About Me</h2>
+    <p>
+      Entry-level IT Support Specialist with hands-on experience assisting users
+      in schools and community centers. Google IT Support graduate and currently
+      completing cybersecurity and CompTIA certifications. Bilingual
+      (English/Spanish) and passionate about helping people through technology.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>🛠 Skills</h2>
+    <ul class="skills">
+      <li>Windows, macOS, Linux (basic)</li>
+      <li>Networking (TCP/IP, DNS, DHCP)</li>
+      <li>PC Setup & Troubleshooting</li>
+      <li>Cybersecurity Fundamentals</li>
+      <li>Google Workspace & Microsoft Office</li>
+      <li>Bash / PowerShell (basic)</li>
+      <li>Customer Support & Ticketing</li>
+      <li>Bilingual: English / Spanish</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>💼 Experience</h2>
+
+    <h3>Assistant – Red Hook Recreation Center</h3>
+    <span>Brooklyn, NY | Nov 2024 – Jan 2025</span>
+    <ul>
+      <li>Provided computer troubleshooting and device setup support</li>
+      <li>Maintained computer and music lab for youth</li>
+      <li>Delivered one-on-one assistance to diverse community members</li>
+    </ul>
+
+    <h3>Assistant Art Teacher – Bronx Park Middle School</h3>
+    <span>Sep 2024 – Nov 2024</span>
+    <ul>
+      <li>Supported classroom technology and digital assignments</li>
+      <li>Troubleshot laptops and school software</li>
+      <li>Acted as Spanish translator for parents</li>
+    </ul>
+
+    <h3>Summer Camp Counselor – Sacred Heart Catholic School</h3>
+    <span>Summers 2023 – Present</span>
+    <ul>
+      <li>Supervised students and ensured safety</li>
+      <li>Communicated daily with parents</li>
+      <li>Built leadership and problem-solving skills</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>🎓 Certifications</h2>
+    <ul>
+      <li>Google IT Support Professional Certificate (Completed – 2025)</li>
+      <li>Google Cybersecurity Certificate (In Progress)</li>
+      <li>CompTIA A+ (In Progress)</li>
+      <li>CompTIA Network+ (In Progress)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2026 Jayden Reyes • Built with HTML & CSS</p>
+  </footer>
+<!-- EMAIL MODAL -->
+<div id="emailModal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeEmailModal()">✖</button>
+
+    <h2>📡 Contact ME</h2>
+
+    <div class="email-box">
+      <span>Personal Email</span>
+      <p id="email1">reyesjayden83@gmail.com</p>
+      <button onclick="copyEmail('email1')">Copy</button>
+    </div>
+
+    <div class="email-box">
+      <span>Pursuit Email</span>
+      <p id="email2">jayden.reyes@pursuit.org</p>
+      <button onclick="copyEmail('email2')">Copy</button>
+    </div>
+
+    <p class="copied-msg" id="copiedMsg">Copied to clipboard ☠️</p>
+  </div>
+</div>
+
+<script>
+  function openEmailModal() {
+    document.getElementById("emailModal").style.display = "flex";
+  }
+
+  function closeEmailModal() {
+    document.getElementById("emailModal").style.display = "none";
+  }
+
+  function copyEmail(id) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text);
+
+    const msg = document.getElementById("copiedMsg");
+    msg.style.opacity = "1";
+
+    setTimeout(() => {
+      msg.style.opacity = "0";
+    }, 1500);
+  }
+</script>
+
+</body>
+</html>
